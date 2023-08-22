@@ -1,0 +1,20 @@
+:root{
+    --body-color:#080C0CA6;
+    --body-color-bg:#f3f4f7;
+    --side-bar-w:256px;
+    --header-h:116px;
+    --header-color-bg:#fff;
+    --border-color:#dbdfe6;
+    --link-color:#321fdb;
+    --link-active-color:#080a0c;
+    --nav-item-seperate:#dbdfe6;
+}
+.dark-theme{
+    --body-color:#ffffffa6;
+    --body-color-bg:#181924;
+    --header-color-bg:#323a49;
+    --link-active-color:#fff;
+    --border-color:#4a566d;
+    --link-color:#8479e9;
+    --nav-item-seperate:#4a566da6;
+}
