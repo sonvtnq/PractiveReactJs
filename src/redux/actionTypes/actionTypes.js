@@ -1,0 +1,13 @@
+const SIDE_BAR='SIDE_BAR'
+const VIEW_MODE_LIGHT='VIEW_MODE_LIGHT'
+const VIEW_MODE_DARK='VIEW_MODE_DARK'
+const VIEW_MODE_AUTO='VIEW_MODE_AUTO'
+
+const actionTypes={
+    SIDE_BAR,
+    VIEW_MODE_LIGHT,
+    VIEW_MODE_DARK,
+    VIEW_MODE_AUTO,
+}
+
+export default actionTypes

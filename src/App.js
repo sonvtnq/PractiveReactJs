@@ -3,11 +3,13 @@ import './App.css';
 import Home from './pages/home/home';
 import SignIn from './pages/signin/SignIn';
 import SignUp from './pages/signup/SignUp';
+import { useSelector } from 'react-redux';
 
 
 function App() {
+  const viewMode=useSelector(state=>state.view.viewMode);
   return (
-    <div className='dark-them'>
+    <div className={`overflow-hide ${viewMode=='dark'?'dark-theme':''} `}>
       {/* <nav>
         <ul>
           <li>

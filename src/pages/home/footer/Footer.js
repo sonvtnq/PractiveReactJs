@@ -7,12 +7,15 @@ const FooterStyled=styled.div`
     border-top:1px solid var(--border-color);
     width:100%;
     padding: .5rem;
-    min-height:3rem;
+    // min-height:3rem;
     display:flex;
     align-items:center;
     justify-content:space-between;
     box-sizing:border-box;
     font-size:1.1rem;
+    // position:absolute;
+    // bottom:0;
+    // left:0;
     >div{
         display: flex;
         >span{
