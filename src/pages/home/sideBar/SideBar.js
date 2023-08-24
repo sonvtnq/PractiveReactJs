@@ -2,7 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";
 import { MdOutlineWaterDrop } from "react-icons/md"
+import { TfiDashboard } from "react-icons/tfi"
+import { AiOutlineStar } from "react-icons/ai"
 import SidebarNavItems from "./sidebarNavItem/SidebarNavItems";
+import Lang from "../../../components/language/languages";
 const SideBarStyled=styled.div`
     // border:1px solid red;
     color:var(--sidebar-color);
@@ -47,6 +50,7 @@ const SideBarStyled=styled.div`
     }
     .sidebar-nav-items{
         color:var(--sidebar-color);
+        padding:.75rem 1rem;
         & a{
             text-decoration:none;
             color:var(--sidebar-color);
@@ -59,22 +63,35 @@ const SideBarStyled=styled.div`
             }
         }
         .badge{
-            top:50%;
+            top:30px;
             right:30px;
             transform:translateY(-50%);
             color:#fff;
             display:block;
-            border-radius:8px;
+            border-radius:6px;
             padding:.25rem .5rem;
             font-weight:700;
-            font-size:.9rem;
+            font-size:.75rem;
             &.new{
                 background-color: #3399ff;
             }
             &.pro{
                 background-color: #e55353;
             }
+            &.free{
+                background-color: #2eb85c;
+            }
         }
+        .multiple{
+            top:55%
+        }
+    }
+    .sidebar-nav-item-head{
+        box-sizing:border-box;
+        color:var(--sidebar-color);
+        margin-top:.5rem;
+        padding:.5rem .75rem;
+        font-weight:700;
     }
 `
 
@@ -90,17 +107,61 @@ const SideBar=props=>{
             </div>
             <ul className="sidebar-nav scrollable-container">
                 <SidebarNavItems 
+                    icon={<TfiDashboard fontSize='2rem'/>}
+                    name={Lang().header_dashboard}
+                    badgeNew={Lang().sidebar_spot_new}
+                    linkTo=''
+                    className=''
+                />
+                <li className={`sidebar-nav-item-head d-flex align-items-center w-100`}>
+                    <p>{Lang().sidebar_head1.toUpperCase()}</p>
+                </li>
+                <SidebarNavItems 
                     icon={<MdOutlineWaterDrop fontSize='2rem'/>}
-                    name='Colors'
-                    badge='new'
+                    name={Lang().sidebar_nav_item_color}
+                    // badgeFree={Lang().sidebar_spot_free}
                     linkTo=''
                     className=''
                 />
                 <SidebarNavItems 
                     icon={<MdOutlineWaterDrop fontSize='2rem'/>}
-                    name='Colors'
-                    badge='pro'
+                    name={Lang().sidebar_head1}
+                    // badgeNew={Lang().sidebar_spot_new}
+                    linkTo=''
+                    className=''
                 />
+                 <li className={`sidebar-nav-item-head d-flex align-items-center w-100`}>
+                    <p>{Lang().sidebar_head2.toUpperCase()}</p>
+                </li>
+                <SidebarNavItems 
+                    icon={<AiOutlineStar fontSize='2rem'/>}
+                    name={Lang().sidebar_nav_item_icon}
+                    // badgeNew={Lang().sidebar_spot_new}
+                    linkTo=''
+                    className=''
+                    multi='true'
+                />
+                    <ul>
+                        <SidebarNavItems 
+                            name='test'
+                            linkTo=''
+                            className=''
+                        />
+                        <SidebarNavItems 
+                            name='test'
+                            linkTo=''
+                            className=''
+                        />
+                    </ul>
+                <SidebarNavItems 
+                    icon={<AiOutlineStar fontSize='2rem'/>}
+                    name={Lang().sidebar_nav_item_icon}
+                    // badgeNew={Lang().sidebar_spot_new}
+                    linkTo=''
+                    className=''
+                    multi='true'
+                />
+                
             </ul>
             <div className="sidebar-toggle">
 

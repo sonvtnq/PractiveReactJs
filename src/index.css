@@ -1,6 +1,7 @@
 *{
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 .center{
   display: flex;
@@ -25,14 +26,26 @@
 .w-160px{
   width: 160px !important;
 }
+.w-140px{
+  width: 140px !important;
+}
+.w-130px{
+  width: 130px !important;
+}
 .w-100px{
-  width: 100px;
+  width: 100px !important;
 }
 .w-70px{
   width: 70px;
 }
 .w-50px{
   width: 50px;
+}
+.w-32px{
+  width: 32px;
+}
+.w-30px{
+  width: 30px;
 }
 .w-auto{
   width: auto !important;
@@ -52,9 +65,19 @@
 .h-70{
   height: 70%;
 }
+.h-60px{
+  height: 60px;
+}
+.h-51px{
+  height: 51px;
+}
+.h-25px{
+  height: 25px;
+}
 .img{
   >img{
     height: 100%;
+    width: 100%;
   }
 }
 .padding-0-1{
@@ -111,11 +134,17 @@
 .d-flex{
   display: flex;
 }
+.flex-column{
+  flex-direction: column;
+}
 .align-items-center{
   align-items: center;
 }
 .jus-between{
   justify-content: space-between;
+}
+.jus-start{
+  justify-content: start;
 }
 .jus-center{
   justify-content: center;
@@ -140,7 +169,7 @@
 
 
 .test{
-  font-weight: 900;
+  width: 130px;
 }
 
 /* Tùy chỉnh nền của thanh cuộn */

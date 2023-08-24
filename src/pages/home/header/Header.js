@@ -5,12 +5,14 @@ import { BiBell } from "react-icons/bi"
 import { BsCircleHalf, BsListTask, BsMoon } from "react-icons/bs"
 import { HiOutlineMailOpen, HiAdjustments } from "react-icons/hi"
 import { MdOutlineLightMode } from "react-icons/md"
+import {HiOutlineLanguage} from "react-icons/hi2"
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import viewActions from "../../../redux/actions/viewActions"
 import DropdownItem from "./dropDown/dropDownItem";
 import notifications from "../../../data/notifications";
 import pendingTask from "../../../data/pendingTask";
+import Lang from "../../../components/language/languages";
 
 const HeaderStyled = styled.div`
     position: -webkit-sticky;
@@ -60,9 +62,16 @@ const HeaderStyled = styled.div`
     .nav-item{
         position:relative;
         padding: 0 .5rem;
+        display:flex;
+        align-items:center;
+        justify-content:center;
         >.nav-link{
             text-decoration: none;
             color:var(--body-color);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
             &.active{
                 color:var(--link-active-color);
                 // font-weight:500;
@@ -71,7 +80,7 @@ const HeaderStyled = styled.div`
         .seperate{
             border-right:1px solid var(--nav-item-seperate);
             height:130%;
-            transform:translateY(-15%)
+            // transform:translateY(-15%);
         }
     }
     .dropdown-menu{
@@ -117,7 +126,7 @@ const HeaderStyled = styled.div`
     .change-mode{
         display:flex;
         flex-decoration:column;
-        >a{
+        >.nav-link{
             display:none;
             &.show{
                 display:block;
@@ -131,23 +140,30 @@ const HeaderStyled = styled.div`
 `
 const Header = props => {
     const [showMode, setShowMode] = useState('light');
+    const [language, setLanguage] = useState('en');
     const [showChangeModeOpt, setShowChangeModeOpt] = useState(false);
     const [showNotify,setShowNotify]=useState(false);
     const [showTasks,setShowTasks]=useState(false)
+    const [showChangeLanguage, setShowChangeLanguage] = useState(false);
     const dispatch = useDispatch();
+    
     const _clickMenuIcon = () => {
         dispatch(viewActions.sideBar())
     }
     const _setShowMode = value => {
-        setHide()
         setShowMode(value)
         dispatch(viewActions.viewMode(value))
+    }
+    const _setLanguage=(value) =>{
+        dispatch(viewActions.viewLanguage(value))
+        // console.log(dispatch(viewActions.viewLanguage(value)));
     }
 
     const setHide = () => {
         setShowChangeModeOpt(false)
         setShowNotify(false)
         setShowTasks(false)
+        setShowChangeLanguage(false)
     }
     const _showChangeModeOpt = () => {
         setHide()
@@ -161,6 +177,10 @@ const Header = props => {
         setHide()
         setShowTasks(!showTasks)
     }
+    const _showChangeLanguage=()=>{
+        setHide()
+        setShowChangeLanguage(!showChangeLanguage)
+    }
 
     return (
         <HeaderStyled>
@@ -170,13 +190,13 @@ const Header = props => {
                 </div>
                 <ul className="header-nav mr-auto">
                     <li className="nav-item">
-                        <Link to='#/dashboard' className="nav-link active">Dashboard</Link>
+                        <Link to='#/dashboard' className="nav-link active">{Lang().header_dashboard}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to='#' className="nav-link">Users</Link>
+                        <Link to='#' className="nav-link">{Lang().header_user}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to='#' className="nav-link">Settings</Link>
+                        <Link to='#' className="nav-link">{Lang().header_settings}</Link>
                     </li>
                 </ul>
                 <ul className="header-nav">
@@ -222,19 +242,38 @@ const Header = props => {
                                 <div className="padding-0-1 d-flex align-items-center">
                                     <MdOutlineLightMode color={showMode == 'light' ? '#fff' : 'var(--body-color)'} fontSize="1.3rem" />
                                 </div>
-                                <p>Light</p>
+                                <p>{Lang().mode_light}</p>
                             </li>
                             <li className={`dropdown-item d-flex w-160px cursor-pointer ${showMode == 'dark' ? 'active' : ''}`} onClick={() => _setShowMode('dark')} >
                                 <div className="padding-0-1">
                                     <BsMoon color={showMode == 'dark' ? '#fff' : 'var(--body-color)'} fontSize="1.3rem" />
                                 </div>
-                                <p>Dark</p>
+                                <p>{Lang().mode_dark}</p>
                             </li>
                             <li className={`dropdown-item d-flex w-160px cursor-pointer ${showMode == 'auto' ? 'active' : ''}`} onClick={() => _setShowMode('auto')}>
                                 <div className="padding-0-1">
                                     <BsCircleHalf color={showMode == 'auto' ? '#fff' : 'var(--body-color)'} fontSize="1.3rem" />
                                 </div>
-                                <p>Auto</p>
+                                <p>{Lang().mode_auto}</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li className="nav-item pos-relative" onClick={_showChangeLanguage}>
+                        <Link to='#' className="nav-link">
+                            <HiOutlineLanguage color="var(--body-color)" fontSize="1.3rem" />
+                        </Link>
+                        <ul className={`dropdown-menu pt-1 pb-1 w-auto ${showChangeLanguage?'show':''}`}>
+                            <li className={`dropdown-item d-flex cursor-pointer w-140px center jus-between`} onClick={()=>_setLanguage('en')}>
+                                English
+                                <div className="flag img center h-25px">
+                                    <img src="/languages/flags/en.jpg"/>
+                                </div>
+                            </li>
+                            <li className={`dropdown-item d-flex cursor-pointer w-140px center jus-between`} onClick={()=>_setLanguage('vi')}>
+                                Tiếng Việt
+                                <div className="flag img center h-25px">
+                                    <img src="/languages/flags/vi.png"/>
+                                </div>
                             </li>
                         </ul>
                     </li>
@@ -260,7 +299,7 @@ const Header = props => {
             </div>
             <div className="seperate"></div>
             <div className="header-row header-row2">
-                <p>Home / Dashboard</p>
+                <p>{Lang().home} / {Lang().header_dashboard}</p>
             </div>
         </HeaderStyled>
     )

@@ -6,6 +6,7 @@ import SignUp from './pages/signup/SignUp';
 import { useSelector } from 'react-redux';
 
 
+
 function App() {
   const viewMode=useSelector(state=>state.view.viewMode);
   return (

@@ -2,10 +2,23 @@ import actionTypes from "../actionTypes/actionTypes";
 const initSate={
     sideBarIsOpen:true,
     viewMode:'light',
+    viewLanguage:'en',
 }
 
 const ViewReducer=(state=initSate,action)=>{
     switch(action.type){
+        //Chỉnh viewLanguage
+        case actionTypes.VIEW_LANGUAGE_EN:
+            return{
+                ...state,
+                viewLanguage:'en',
+            }
+        case actionTypes.VIEW_LANGUAGE_VI:
+            return{
+                ...state,
+                viewLanguage:'vi',
+            }
+
         //Chỉnh viewMode
         case actionTypes.VIEW_MODE_LIGHT:
             return{
