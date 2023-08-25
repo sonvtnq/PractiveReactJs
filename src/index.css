@@ -71,6 +71,9 @@
 .h-51px{
   height: 51px;
 }
+.h-36px{
+  height: 36px;
+}
 .h-25px{
   height: 25px;
 }
@@ -122,6 +125,12 @@
 .mr-2{
   margin-right: 1rem;
 }
+.m-auto{
+  margin: auto;
+}
+.ml-auto{
+  margin-left: auto;
+}
 .overflow-hide{
   overflow: hidden;
 }
@@ -149,6 +158,19 @@
 .jus-center{
   justify-content: center;
 }
+
+@keyframes upsideDown {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+.upside-down{
+  transform: rotate(180deg);
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -169,7 +191,7 @@
 
 
 .test{
-  width: 130px;
+  outline: none;
 }
 
 /* Tùy chỉnh nền của thanh cuộn */

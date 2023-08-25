@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";
 import { MdOutlineWaterDrop } from "react-icons/md"
@@ -50,16 +50,24 @@ const SideBarStyled=styled.div`
     }
     .sidebar-nav-items{
         color:var(--sidebar-color);
-        padding:.75rem 1rem;
+        position:relative;
+           
         & a{
+            padding:.75rem 1rem;
             text-decoration:none;
             color:var(--sidebar-color);
-        }
-        &:hover{
-            background-color:var(--sidebar-nav-items-hover-color-bg);
-            color:var(--sidebar-nav-items-hover-color);
-            & a{
+            &:hover ,&.active{
+                background-color:var(--sidebar-nav-items-hover-color-bg);
                 color:var(--sidebar-nav-items-hover-color);
+                & a{
+                    color:var(--sidebar-nav-items-hover-color);
+                }
+                &.multi{
+                    background-color: #323a49;
+                    & a{
+                        color:var(--sidebar-color);
+                    }
+                }
             }
         }
         .badge{
@@ -83,8 +91,18 @@ const SideBarStyled=styled.div`
             }
         }
         .multiple{
-            top:55%
+            transition: transform .25s;
         }
+    }
+    .sidebar-nav-items.show{
+        background-color:#282e3a;
+        .multiple{
+            // top: 15px;
+        }
+    }
+    .item-nav{
+        overflow: hidden;
+        transition: height .2s ease;
     }
     .sidebar-nav-item-head{
         box-sizing:border-box;
@@ -97,6 +115,7 @@ const SideBarStyled=styled.div`
 
 const SideBar=props=>{
     const sideBarIsOpen=useSelector(state=>state.view.sideBarIsOpen)
+
     return(
         <SideBarStyled className={sideBarIsOpen?'':'close'}>
             <div className="sidebar-brand">
@@ -110,7 +129,7 @@ const SideBar=props=>{
                     icon={<TfiDashboard fontSize='2rem'/>}
                     name={Lang().header_dashboard}
                     badgeNew={Lang().sidebar_spot_new}
-                    linkTo=''
+                    linkTo='/dashboard'
                     className=''
                 />
                 <li className={`sidebar-nav-item-head d-flex align-items-center w-100`}>
@@ -119,17 +138,16 @@ const SideBar=props=>{
                 <SidebarNavItems 
                     icon={<MdOutlineWaterDrop fontSize='2rem'/>}
                     name={Lang().sidebar_nav_item_color}
-                    // badgeFree={Lang().sidebar_spot_free}
-                    linkTo=''
+                    linkTo='/color'
                     className=''
                 />
-                <SidebarNavItems 
+                {/* <SidebarNavItems 
                     icon={<MdOutlineWaterDrop fontSize='2rem'/>}
                     name={Lang().sidebar_head1}
                     // badgeNew={Lang().sidebar_spot_new}
                     linkTo=''
                     className=''
-                />
+                /> */}
                  <li className={`sidebar-nav-item-head d-flex align-items-center w-100`}>
                     <p>{Lang().sidebar_head2.toUpperCase()}</p>
                 </li>
@@ -137,22 +155,15 @@ const SideBar=props=>{
                     icon={<AiOutlineStar fontSize='2rem'/>}
                     name={Lang().sidebar_nav_item_icon}
                     // badgeNew={Lang().sidebar_spot_new}
-                    linkTo=''
-                    className=''
+                    linkTo='none'
+                    className='test'
                     multi='true'
+                    listItem={[
+                        <SidebarNavItems name='test' linkTo='/#'/>,
+                        <SidebarNavItems name='test' linkTo='/color'/>,
+                        <SidebarNavItems name='test' linkTo=''/>,
+                    ]}
                 />
-                    <ul>
-                        <SidebarNavItems 
-                            name='test'
-                            linkTo=''
-                            className=''
-                        />
-                        <SidebarNavItems 
-                            name='test'
-                            linkTo=''
-                            className=''
-                        />
-                    </ul>
                 <SidebarNavItems 
                     icon={<AiOutlineStar fontSize='2rem'/>}
                     name={Lang().sidebar_nav_item_icon}

@@ -27,6 +27,7 @@ const HeaderStyled = styled.div`
     padding:.5rem;
     box-sizing: border-box;
     font-size:1.1rem;
+    // margin-bottom: var(--header-margin-bottom);
     .header-row{
         width:100%;
         padding: 0 1rem;
@@ -118,7 +119,7 @@ const HeaderStyled = styled.div`
         &:hover{
             background-color: var(--dropdown-hover-color-bg);
         }
-        &.active{
+        &.active ,&:active{
             background-color:var(--dropdown-item-active);
             color:#fff;
         }

@@ -4,6 +4,9 @@ import Home from './pages/home/home';
 import SignIn from './pages/signin/SignIn';
 import SignUp from './pages/signup/SignUp';
 import { useSelector } from 'react-redux';
+import Main from './pages/home/main/Main';
+import MainColor from './components/main/colors/color';
+import Dashboard from './components/main/dashboard/Dashboard';
 
 
 
@@ -25,7 +28,10 @@ function App() {
         </ul>
       </nav> */}
       <Routes>
-        <Route path='/' element={<Home/>} />
+        <Route path='/' element={<Home/>} >
+          <Route path="/color" element={<MainColor />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
         <Route path='/sign-in' element={<SignIn/>} />
         <Route path='/sign-up' element={<SignUp/>} />
       </Routes>

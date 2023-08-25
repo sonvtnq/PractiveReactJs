@@ -11,6 +11,7 @@
     --side-bar-w:256px;
     --header-h:116px;
     --footer-h:3rem;
+    --main-padding-top:1.5rem;
     --header-color-bg:#fff;
     --border-color:#dbdfe6;
     --link-color:#321fdb;
@@ -37,6 +38,7 @@
     --dropdown-head-color-bg:#323a49;
 }
 
-html,body{
+/* html,body{
     color: var(--body-color);
-}
+    background-color: var(--body-color-bg);
+} */
