@@ -9,6 +9,7 @@ const WrapperStyled=styled.div`
     // margin-left:var(--side-bar-w)
     transition: margin 600ms cubic-bezier(0.23, 1, 0.320, 1);
     position:relative;
+    background-color: var(--body-color-bg)
 `
 
 const Wrapper=props=>{

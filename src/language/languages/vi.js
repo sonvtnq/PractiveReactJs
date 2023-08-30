@@ -1,6 +1,7 @@
 const vi={
     header_dashboard:'Bảng điều khiển',
     header_user:'Người dùng',
+    detail_user:'TT tài khoản',
     header_settings:'Cài đặt',
     home:'Trang chủ',
     sidebar_nav_item_color:'Màu sắc',

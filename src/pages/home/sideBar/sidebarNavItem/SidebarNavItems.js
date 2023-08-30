@@ -9,11 +9,11 @@ const SidebarNavItems=props=>{
             setNavOpen(!navOpen)
         }
     }
-    
+    // console.log((!props.linkTo || props.linkTo=='none') && !navOpen);
     return(
         <li className={`${props.className} ${props.multi && navOpen?'show':''} w-100 sidebar-nav-items w-100 border-box`} >
-            <NavLink to={props.linkTo&&props.linkTo!='none'?props.linkTo:'#'}  
-                className={`center jus-start h-60px w-100 border-box pos-relative ${!props.linkTo || props.linkTo=='none'?'multi':''}`}
+            <NavLink to={props.linkTo&&props.linkTo!='none'?props.linkTo:'#'} 
+                className={`nav-item-lv2 center jus-start h-60px w-100 border-box pos-relative ${(props.linkTo || props.linkTo=='none') && navOpen?'multi-active':''} ${(!props.linkTo || props.linkTo=='none')?'multi-not-hover':''}`}
                 onClick={_onClick}
             >
                 <div className="img mr-2 w-32px">

@@ -4,8 +4,9 @@ import { styled } from "styled-components";
 import { MdOutlineWaterDrop } from "react-icons/md"
 import { TfiDashboard } from "react-icons/tfi"
 import { AiOutlineStar } from "react-icons/ai"
+import { BiUser } from "react-icons/bi"
 import SidebarNavItems from "./sidebarNavItem/SidebarNavItems";
-import Lang from "../../../components/language/languages";
+import Lang from "../../../language/languages";
 const SideBarStyled=styled.div`
     // border:1px solid red;
     color:var(--sidebar-color);
@@ -56,18 +57,34 @@ const SideBarStyled=styled.div`
             padding:.75rem 1rem;
             text-decoration:none;
             color:var(--sidebar-color);
-            &:hover ,&.active{
+            &.active{
                 background-color:var(--sidebar-nav-items-hover-color-bg);
                 color:var(--sidebar-nav-items-hover-color);
                 & a{
                     color:var(--sidebar-nav-items-hover-color);
                 }
-                &.multi{
+                &.multi-not-hover{
                     background-color: #323a49;
-                    & a{
-                        color:var(--sidebar-color);
+                    color:#ffffff99;
+                    &:hover{
+                        background-color: var(--sidebar-nav-items-hover-color-bg);
+                        & a{
+                            color:var(--sidebar-color);
+                        }
                     }
                 }
+                &.multi-active{
+                    background-color: #282e3a;
+                    color:var(--sidebar-color);
+                    &:hover{
+                        background-color:#333944;
+                        color:#ffffffde;
+                    }
+                }
+            }
+            &:hover{
+                background-color:var(--sidebar-nav-items-hover-color-bg);
+                color:var(--sidebar-nav-items-hover-color);
             }
         }
         .badge{
@@ -103,6 +120,14 @@ const SideBarStyled=styled.div`
     .item-nav{
         overflow: hidden;
         transition: height .2s ease;
+        & a:hover{
+            background-color:#333944;
+            color:#ffffffde;
+        }
+        & a.active{
+            background-color:#333944;
+            color:#ffffffde;
+        }
     }
     .sidebar-nav-item-head{
         box-sizing:border-box;
@@ -126,10 +151,10 @@ const SideBar=props=>{
             </div>
             <ul className="sidebar-nav scrollable-container">
                 <SidebarNavItems 
-                    icon={<TfiDashboard fontSize='2rem'/>}
-                    name={Lang().header_dashboard}
+                    icon={<BiUser fontSize='2rem'/>}
+                    name={Lang().detail_user}
                     badgeNew={Lang().sidebar_spot_new}
-                    linkTo='/dashboard'
+                    linkTo='/detail-acount'
                     className=''
                 />
                 <li className={`sidebar-nav-item-head d-flex align-items-center w-100`}>
@@ -159,16 +184,16 @@ const SideBar=props=>{
                     className='test'
                     multi='true'
                     listItem={[
+                        <SidebarNavItems name={Lang().header_dashboard} linkTo='/dashboard'/>,
+                        <SidebarNavItems name='Colors' linkTo='/color'/>,
                         <SidebarNavItems name='test' linkTo='/#'/>,
-                        <SidebarNavItems name='test' linkTo='/color'/>,
-                        <SidebarNavItems name='test' linkTo=''/>,
                     ]}
                 />
                 <SidebarNavItems 
                     icon={<AiOutlineStar fontSize='2rem'/>}
                     name={Lang().sidebar_nav_item_icon}
                     // badgeNew={Lang().sidebar_spot_new}
-                    linkTo=''
+                    linkTo='none'
                     className=''
                     multi='true'
                 />

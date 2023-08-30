@@ -1,6 +1,7 @@
 const en={
     header_dashboard:'Dashboard',
     header_user:'User',
+    detail_user:'Detail User',
     header_settings:'Settings',
     home:'Home',
     sidebar_nav_item_color:'Colors',

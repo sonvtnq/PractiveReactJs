@@ -12,7 +12,7 @@ import viewActions from "../../../redux/actions/viewActions"
 import DropdownItem from "./dropDown/dropDownItem";
 import notifications from "../../../data/notifications";
 import pendingTask from "../../../data/pendingTask";
-import Lang from "../../../components/language/languages";
+import Lang from "../../../language/languages";
 
 const HeaderStyled = styled.div`
     position: -webkit-sticky;
